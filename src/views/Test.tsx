@@ -2,11 +2,9 @@ import React from 'react'
 import { Button } from 'antd';
 import useInjectedWeb3 from '../components/hooks/useInjectedWeb3';
 import { Store } from '../common/Store';
-import useLoadInjectedWeb3State from '../components/hooks/useLoadInjectedWeb3State';
-import { LoomObject } from '../common/Interfaces';
-import Web3 from 'web3';
 import { notify } from '../common/Actions';
 import useLoadInjectedEthersState from '../components/hooks/useLoadInjectedEthersState';
+import { ethers } from 'ethers';
 
 
 const someTopSpace = {
@@ -55,9 +53,16 @@ export default function Test() {
               type="dashed"
               onClick={ async() => {
                 console.log("ethers provider:", state.ethersProvider);
+                let eths = state.ethersProvider;
 
-                let address = await state.ethersProvider.resolveName('kodeart.eth');
+                let address = await eths.resolveName('kodeart.eth');
                 notify('kodeart.eth translated to addr:' + address);
+
+                let balance = await eths.getBalance('kodeart.eth');
+                let converted = await ethers.utils.formatEther(balance);
+
+                notify('kodeart.eth balanace:' + converted);
+
               }}
              >
                translate kodeart.eth
