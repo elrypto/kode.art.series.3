@@ -1,4 +1,5 @@
 import Web3 from "web3";
+import { Web3Provider } from "ethers/providers";
 
 /**
 |--------------------------------------------------
@@ -13,7 +14,7 @@ export interface AppState {
   ethWeb3: Web3| null;
   ethBalance: string;
   injectedProvider: any;
-  ethersProvider: any;
+  ethersProvider: Web3Provider| null;
   loomObj: LoomObject| null;
   loomConnectionInfo: LoomConnectionInfo| null;
 }

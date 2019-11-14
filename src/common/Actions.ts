@@ -1,7 +1,8 @@
 import _ from "lodash";
 import { toast } from "react-toastify";
 import Axios from "axios";
-
+import { ethers } from 'ethers';
+import { Web3Provider } from "ethers/providers";
 
 
 export const notify = (msg: string, success?: boolean) => {
@@ -32,4 +33,13 @@ export const rpcStatus = async():Promise<boolean> => {
     return false;
   }
 }
+
+
+
+export const ethBalance = async(ethersProvider: Web3Provider): Promise<string> => {
+  let balance = await ethersProvider.getBalance('kodeart.eth');
+  return await ethers.utils.formatEther(balance);
+}
+
+
 

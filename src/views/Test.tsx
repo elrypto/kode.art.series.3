@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'antd';
 import useInjectedWeb3 from '../components/hooks/useInjectedWeb3';
 import { Store } from '../common/Store';
-import { notify } from '../common/Actions';
+import { notify, ethBalance } from '../common/Actions';
 import useLoadInjectedEthersState from '../components/hooks/useLoadInjectedEthersState';
 import { ethers } from 'ethers';
 
@@ -58,9 +58,7 @@ export default function Test() {
                 let address = await eths.resolveName('kodeart.eth');
                 notify('kodeart.eth translated to addr:' + address);
 
-                let balance = await eths.getBalance('kodeart.eth');
-                let converted = await ethers.utils.formatEther(balance);
-
+                let converted = await ethBalance(eths);
                 notify('kodeart.eth balanace:' + converted);
 
               }}
