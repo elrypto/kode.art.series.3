@@ -12,7 +12,8 @@ export enum ActionType {
   SET_INJECTED_PROVIDER = "kodeart/SET_INJECTED_PROVIDER",
   SET_ETHERS_PROVIDER = "kodeart/SET_ETHERS_PROVIDER",
   SET_LOOM_OBJ = "kodeart/SET_LOOM_OBJ",
-  SET_LOOM_CONNECTION_INFO = "kodeart/SET_LOOM_CONNECTION_INFO"
+  SET_LOOM_CONNECTION_INFO = "kodeart/SET_LOOM_CONNECTION_INFO",
+  SET_ENS_ADDRESS = "kodeart/SET_ENS_ADDRESS"
 }
 
 
@@ -23,7 +24,8 @@ const initialState: AppState = {
   injectedProvider: null,
   ethersProvider: null,
   loomObj: null,
-  loomConnectionInfo: null
+  loomConnectionInfo: null,
+  ensAddress: '--'
 };
 
 
@@ -59,7 +61,10 @@ function reducer(state: AppState, action: Action | any): AppState {
       return {
         ...state, loomConnectionInfo: action.payload
       }
-
+    case ActionType.SET_ENS_ADDRESS:
+      return {
+        ...state, ensAddress: action.payload
+      }
     default:
       return state;
   }

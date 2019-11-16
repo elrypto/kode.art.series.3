@@ -1,11 +1,8 @@
 import React from 'react'
-import { Button } from 'antd';
 import useInjectedWeb3 from '../components/hooks/useInjectedWeb3';
 import { Store } from '../common/Store';
-import { notify, ethBalance } from '../common/Actions';
 import useLoadInjectedEthersState from '../components/hooks/useLoadInjectedEthersState';
-import { ethers } from 'ethers';
-
+import  EnsTest from './../components/test/EnsTest';
 
 const someTopSpace = {
   marginTop: '2em'
@@ -31,7 +28,7 @@ export default function Test() {
             <div>Ethereum</div>
             <div className="row seeMe"> 
               <div className="col-md-8">
-                Address
+               {state.ensAddress}
               </div>
               <div className="col-md-4">
                 Balance
@@ -42,30 +39,13 @@ export default function Test() {
                 {state.selectedEthAddr}
               </div>
               <div className="col-md-4">
-                 b
+                {state.ethBalance}
               </div>
             </div>
 
 
-            <div>Loom</div>
-            <div className="row seeMe"> 
-             <Button
-              type="dashed"
-              onClick={ async() => {
-                console.log("ethers provider:", state.ethersProvider);
-                let eths = state.ethersProvider;
+            <EnsTest />
 
-                let address = await eths.resolveName('kodeart.eth');
-                notify('kodeart.eth translated to addr:' + address);
-
-                let converted = await ethBalance(eths);
-                notify('kodeart.eth balanace:' + converted);
-
-              }}
-             >
-               translate kodeart.eth
-             </Button>
-            </div>
 
           </div>
         </div>

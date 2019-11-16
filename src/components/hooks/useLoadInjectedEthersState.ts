@@ -33,16 +33,24 @@ export default function useLoadInjectedEthersState() {
         let provider = new ethers.providers.Web3Provider(state.injectedProvider);
         let balance = await provider.getBalance(state.selectedEthAddr);
         let converted = await ethers.utils.formatEther(balance);
+        let reverse = await provider.lookupAddress(state.selectedEthAddr);
+        console.log("hooks, call to reverse returned:", reverse);
 
         dispatch({
           type: ActionType.SET_ETHERS_PROVIDER,
           payload: provider
-        })
+        });
 
         dispatch({
           type: ActionType.SET_ETH_BALANCE,
           payload: converted
-        })
+        });
+
+        dispatch({
+          type: ActionType.SET_ENS_ADDRESS,
+          payload: reverse
+        });
+
       }
     }
 
