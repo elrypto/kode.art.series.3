@@ -3,18 +3,16 @@ import useInjectedWeb3 from '../components/hooks/useInjectedWeb3';
 import { Store } from '../common/Store';
 import useLoadInjectedEthersState from '../components/hooks/useLoadInjectedEthersState';
 import  EnsTest from './../components/test/EnsTest';
+import PortisTest from './../components/test/PortisTest';
+import SuperSimpleAcctDisplay from './../components/test/SuperSimpleAcctDisplay';
 
-const someTopSpace = {
-  marginTop: '2em'
-}
+
 
 export default function Test() {
   const { state, dispatch } = React.useContext(Store);
   useInjectedWeb3();
   useLoadInjectedEthersState();
   
-
-  console.log("config from state", state.loomConnectionInfo);
   
   return (
     <div className="offset">
@@ -25,26 +23,11 @@ export default function Test() {
             <div className="heading-underline"></div>
            
 
-            <div>Ethereum</div>
-            <div className="row seeMe"> 
-              <div className="col-md-8">
-               {state.ensAddress}
-              </div>
-              <div className="col-md-4">
-                Balance
-              </div>
-            </div>
-            <div className="row seeMe"> 
-              <div className="col-md-8">
-                {state.selectedEthAddr}
-              </div>
-              <div className="col-md-4">
-                {state.ethBalance}
-              </div>
-            </div>
-
+           <SuperSimpleAcctDisplay />
 
             <EnsTest />
+
+            <PortisTest />
 
 
           </div>

@@ -34,7 +34,7 @@ export default function useLoadInjectedEthersState() {
         let balance = await provider.getBalance(state.selectedEthAddr);
         let converted = await ethers.utils.formatEther(balance);
         let reverse = await provider.lookupAddress(state.selectedEthAddr);
-        console.log("hooks, call to reverse returned:", reverse);
+        console.log("provider hook returned balanace, ens address:", balance, reverse);
 
         dispatch({
           type: ActionType.SET_ETHERS_PROVIDER,
