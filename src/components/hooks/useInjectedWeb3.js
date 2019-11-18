@@ -8,6 +8,13 @@ export default function useInjectedWeb3() {
     const { dispatch } = React.useContext(Store);
     let provider;
 
+    
+    if (typeof window.ethereum === 'undefined') { 
+        console.error('no metamask');
+        //window.location.assign('/gettingStarted');
+    }
+
+
     React.useEffect(() => {
       const windowProvider = async() => {
         if (typeof window.ethereum !== 'undefined'
@@ -15,6 +22,7 @@ export default function useInjectedWeb3() {
 
             provider = window['ethereum'] || window.web3.currentProvider;
  
+            
             try{
                await provider.enable();
             }catch (e){
