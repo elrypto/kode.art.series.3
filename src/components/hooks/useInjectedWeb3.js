@@ -11,7 +11,9 @@ export default function useInjectedWeb3() {
     
     if (typeof window.ethereum === 'undefined') { 
         console.error('no metamask');
-        //window.location.assign('/gettingStarted');
+        window.location.assign('/gettingStarted');
+        
+        //if no provider currently, then go to connect page
     }
 
 

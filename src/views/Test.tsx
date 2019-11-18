@@ -22,13 +22,11 @@ export default function Test() {
             <h3 className="heading text-center">==--* test  +___=-`</h3>
             <div className="heading-underline"></div>
            
+              <SuperSimpleAcctDisplay />
 
-           <SuperSimpleAcctDisplay />
+              <EnsTest />
 
-            <EnsTest />
-
-            <PortisTest />
-
+              <PortisTest />
 
           </div>
         </div>

@@ -3,6 +3,9 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { StoreProvider} from "./common/Store";
 import { Router, RouteComponentProps } from "@reach/router";
+import GettingStarted from './views/GettingStarted';
+import NotFound from './views/NotFound';
+
 import './bootstrap.min.css';
 import './fixed.css';
 import './style.css';
@@ -21,6 +24,8 @@ ReactDOM.render(
         <App path="/">        
             <RouterPage pageComponent={<Main />} path="/" />
             <RouterPage pageComponent={<Test />} path="/test" />  
+            <RouterPage pageComponent={<GettingStarted />} path="/gettingStarted" />  
+            <RouterPage pageComponent={<NotFound />} default />
         </App>
       </Router>
   </StoreProvider>,
