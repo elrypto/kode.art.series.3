@@ -3,17 +3,18 @@ import { Store, ActionType } from '../../common/Store';
 import { notifyError } from '../../common/Actions';
 
 
-
+//will this run over the portis provider?
 export default function useInjectedWeb3() {
-    const { dispatch } = React.useContext(Store);
+    const { state, dispatch } = React.useContext(Store);
     let provider;
 
     
-    if (typeof window.ethereum === 'undefined') { 
+    // if metamask && no other provider currently, then go to connect page
+     if (typeof window.ethereum === 'undefined' && !state.injectedProvider) { 
+    //if (typeof window.ethereum === 'undefined') { 
+        console.log('state:', state);
         console.error('no metamask');
-        window.location.assign('/gettingStarted');
-        
-        //if no provider currently, then go to connect page
+        //window.location.assign('/gettingStarted');        
     }
 
 

@@ -6,6 +6,10 @@ body{
   color: #505962;
 }
 
+.thirdPartyLogo {
+  width: 30%;
+}
+
 .seeMe {
   border: 1px solid lightgray;
 }
@@ -178,6 +182,36 @@ hr.socket {
 .strong-p{
   font-weight: bold;
 }
+
+
+
+/* getting started */
+#gettingStartedTitle {
+  font-size: 110%;
+  font-weight: bold;
+  color: #632706;
+}
+
+#gettingStartedContainer {
+  margin-top: 2em;
+  background-color: white;
+}
+
+#gettingStartedText {
+  margin-top: 2em;
+  background-color: whitesmoke;
+  padding: 1em;
+}
+
+#getttingStartedTextExplainer {
+  margin-top: 1rem;
+}
+
+.portisLogo {
+  padding-top: 3em;
+}
+
+
 
 @media (max-width: 767px){
 

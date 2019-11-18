@@ -21,7 +21,7 @@ export default function EnsTest() {
           let address = await eths.resolveName('kodeart.eth');
           notify('kodeart.eth translated to addr:' + address);
 
-          let converted = await ethBalance(eths);
+          let converted = await ethBalance(eths, address);
           notify('kodeart.eth balanace:' + converted);
 
           let reverse = await eths.lookupAddress(address);

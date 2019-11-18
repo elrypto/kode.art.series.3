@@ -3,6 +3,8 @@ import { toast } from "react-toastify";
 import Axios from "axios";
 import { ethers } from 'ethers';
 import { Web3Provider } from "ethers/providers";
+import { Dispatch } from './Interfaces';
+import { ActionType } from "./Store";
 
 
 export const notify = (msg: string, success?: boolean) => {
@@ -36,8 +38,33 @@ export const rpcStatus = async():Promise<boolean> => {
 
 
 
-export const ethBalance = async(ethersProvider: Web3Provider): Promise<string> => {
-  let balance = await ethersProvider.getBalance('kodeart.eth');
+export const dispatchProviderAndAddr = (provider: Web3Provider, selectedAddr: string, dispatch: Dispatch) => {
+  dispatch({
+    type: ActionType.SET_ETHERS_PROVIDER,
+    payload: provider
+  });
+  
+  dispatch({
+    type: ActionType.SET_SELECTED_ETH_ADDR,
+    payload: selectedAddr
+  });
+}
+
+
+export const dispatchEthRelated = (convertedBalance: string, ensAddress: string, dispatch: Dispatch) => {
+  dispatch({
+    type: ActionType.SET_ETH_BALANCE,
+    payload: convertedBalance
+  });
+
+  dispatch({
+    type: ActionType.SET_ENS_ADDRESS,
+    payload: ensAddress
+  });
+}
+
+export const ethBalance = async(ethersProvider: Web3Provider, address: string): Promise<string> => {
+  let balance = await ethersProvider.getBalance(address);
   return await ethers.utils.formatEther(balance);
 }
 
