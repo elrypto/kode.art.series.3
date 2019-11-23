@@ -25,9 +25,12 @@ ReactDOM.render(
             <RouterPage pageComponent={<Main />} path="/" />
             <RouterPage pageComponent={<Test />} path="/test" />  
             <RouterPage pageComponent={<GettingStarted />} path="/gettingStarted" />  
-            <RouterPage pageComponent={<NotFound />} default />
         </App>
       </Router>
   </StoreProvider>,
   document.getElementById("root")
 );
+
+/*
+<RouterPage pageComponent={<NotFound />} default />
+*/

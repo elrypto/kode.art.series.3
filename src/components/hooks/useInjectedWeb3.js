@@ -8,11 +8,9 @@ export default function useInjectedWeb3() {
     const { state, dispatch } = React.useContext(Store);
     let provider;
 
-    
     // if metamask && no other provider currently, then go to connect page
      if (typeof window.ethereum === 'undefined' && !state.injectedProvider) { 
     //if (typeof window.ethereum === 'undefined') { 
-        console.log('state:', state);
         console.error('no metamask');
         //window.location.assign('/gettingStarted');        
     }
@@ -25,7 +23,6 @@ export default function useInjectedWeb3() {
 
             provider = window['ethereum'] || window.web3.currentProvider;
  
-            
             try{
                await provider.enable();
             }catch (e){
